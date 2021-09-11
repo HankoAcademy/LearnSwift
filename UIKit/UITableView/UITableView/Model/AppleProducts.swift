@@ -8,8 +8,8 @@
 import Foundation
 
 protocol ProductDetail {
-    var name: String { get set }
-    var price: Double { get set }
+    var name: String { get }
+    var price: Double { get }
     
     init(withName name: String, andPrice price: Double)
 }
