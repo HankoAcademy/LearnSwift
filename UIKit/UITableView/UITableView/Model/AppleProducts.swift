@@ -14,51 +14,26 @@ protocol ProductDetail {
     init(withName name: String, andPrice price: Double)
 }
 
-struct IPhone: ProductDetail {
-    
-    var name: String
-    var price: Double
-    
-    init(withName name: String, andPrice price: Double) {
-        self.name = name
-        self.price = price
-    }
-}
-
-struct IPad: ProductDetail {
-    
-    var name: String
-    var price: Double
-    
-    init(withName name: String, andPrice price: Double) {
-        self.name = name
-        self.price = price
-    }
-    
-}
-
-struct Mac: ProductDetail {
-    
-    var name: String
-    var price: Double
-    
-    init(withName name: String, andPrice price: Double) {
-        self.name = name
-        self.price = price
-    }
-}
-
-
 struct AppleProducts {
     let macs = [
-        Mac(withName: "Mac Pro", andPrice: 5999)
-    ]
-    
-    let iPads = [
-        IPad(withName: "iPad Pro 12.9\"", andPrice: 999)
+        Mac(withName: "iMac", andPrice: 5999),
+        Mac(withName: "Mac Mini", andPrice: 5999),
+        Mac(withName: "Mac Pro", andPrice: 5999),
+        Mac(withName: "Macbook Pro", andPrice: 5999),
+        Mac(withName: "Macbook Air", andPrice: 5999)
     ]
     
     let iPhones = [
-        IPhone(withName: "iPhone 12", andPrice: 999)
+        IPhone(withName: "iPhone 12", andPrice: 999),
+        IPhone(withName: "iPhone 12 Pro", andPrice: 999),
+        IPhone(withName: "iPhone 12 Mini", andPrice: 999),
+        IPhone(withName: "iPhone 12 Pro Max", andPrice: 999)
+    ]
+        
+    let iPads = [
+        IPad(withName: "iPad", andPrice: 999),
+        IPad(withName: "iPad Pro", andPrice: 999),
+        IPad(withName: "iPad Air", andPrice: 999),
+        IPad(withName: "iPad Mini", andPrice: 999)
     ]
 }

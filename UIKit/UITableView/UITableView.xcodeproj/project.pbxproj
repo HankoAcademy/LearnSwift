@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		339491F526EC686A002E4562 /* ProductTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339491F426EC686A002E4562 /* ProductTableHeaderView.swift */; };
+		339491F726EC71A8002E4562 /* ProductDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339491F626EC71A8002E4562 /* ProductDetailTableViewCell.swift */; };
+		339491F926EC7DCB002E4562 /* IPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339491F826EC7DCB002E4562 /* IPhone.swift */; };
+		339491FB26EC7DE3002E4562 /* IPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339491FA26EC7DE3002E4562 /* IPad.swift */; };
+		339491FD26EC7DF3002E4562 /* Mac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339491FC26EC7DF3002E4562 /* Mac.swift */; };
 		F3A62F0626EC2CC3003669F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A62F0526EC2CC3003669F3 /* AppDelegate.swift */; };
 		F3A62F0826EC2CC3003669F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A62F0726EC2CC3003669F3 /* SceneDelegate.swift */; };
-		F3A62F0A26EC2CC3003669F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A62F0926EC2CC3003669F3 /* ViewController.swift */; };
+		F3A62F0A26EC2CC3003669F3 /* AppleProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A62F0926EC2CC3003669F3 /* AppleProductsViewController.swift */; };
 		F3A62F0F26EC2CC4003669F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A62F0E26EC2CC4003669F3 /* Assets.xcassets */; };
 		F3A62F1226EC2CC4003669F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A62F1026EC2CC4003669F3 /* LaunchScreen.storyboard */; };
 		F3A62F1E26EC2D4C003669F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A62F1D26EC2D4C003669F3 /* ContentView.swift */; };
@@ -17,10 +22,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		339491F426EC686A002E4562 /* ProductTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableHeaderView.swift; sourceTree = "<group>"; };
+		339491F626EC71A8002E4562 /* ProductDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailTableViewCell.swift; sourceTree = "<group>"; };
+		339491F826EC7DCB002E4562 /* IPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPhone.swift; sourceTree = "<group>"; };
+		339491FA26EC7DE3002E4562 /* IPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPad.swift; sourceTree = "<group>"; };
+		339491FC26EC7DF3002E4562 /* Mac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mac.swift; sourceTree = "<group>"; };
 		F3A62F0226EC2CC3003669F3 /* UITableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UITableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A62F0526EC2CC3003669F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A62F0726EC2CC3003669F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F3A62F0926EC2CC3003669F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F3A62F0926EC2CC3003669F3 /* AppleProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductsViewController.swift; sourceTree = "<group>"; };
 		F3A62F0E26EC2CC4003669F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3A62F1126EC2CC4003669F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A62F1326EC2CC4003669F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,7 +91,7 @@
 		F3A62F1A26EC2CCF003669F3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F3A62F0926EC2CC3003669F3 /* ViewController.swift */,
+				F3A62F0926EC2CC3003669F3 /* AppleProductsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -90,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				F3A62F1D26EC2D4C003669F3 /* ContentView.swift */,
+				339491F426EC686A002E4562 /* ProductTableHeaderView.swift */,
+				339491F626EC71A8002E4562 /* ProductDetailTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -98,6 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				F3A62F1F26EC4E05003669F3 /* AppleProducts.swift */,
+				339491F826EC7DCB002E4562 /* IPhone.swift */,
+				339491FA26EC7DE3002E4562 /* IPad.swift */,
+				339491FC26EC7DF3002E4562 /* Mac.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,9 +186,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3A62F0A26EC2CC3003669F3 /* ViewController.swift in Sources */,
+				F3A62F0A26EC2CC3003669F3 /* AppleProductsViewController.swift in Sources */,
 				F3A62F0626EC2CC3003669F3 /* AppDelegate.swift in Sources */,
+				339491FB26EC7DE3002E4562 /* IPad.swift in Sources */,
+				339491F926EC7DCB002E4562 /* IPhone.swift in Sources */,
+				339491F726EC71A8002E4562 /* ProductDetailTableViewCell.swift in Sources */,
+				339491FD26EC7DF3002E4562 /* Mac.swift in Sources */,
 				F3A62F2026EC4E05003669F3 /* AppleProducts.swift in Sources */,
+				339491F526EC686A002E4562 /* ProductTableHeaderView.swift in Sources */,
 				F3A62F1E26EC2D4C003669F3 /* ContentView.swift in Sources */,
 				F3A62F0826EC2CC3003669F3 /* SceneDelegate.swift in Sources */,
 			);
