@@ -28,6 +28,7 @@ class ContentView: UIView {
         super.init(frame: frame)
         
         backgroundColor = .white
+        
         setUpViews()
     }
     

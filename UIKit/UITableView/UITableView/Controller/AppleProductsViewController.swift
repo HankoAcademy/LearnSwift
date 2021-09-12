@@ -7,20 +7,21 @@
 
 import UIKit
 
-class AppleProductsViewController: UIViewController {
+class AppleProductsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Class Properties
     
-    let appleProducts = AppleProducts()
+    private let appleProducts = AppleProducts()
     
     // MARK: - UI Properties
     
-    var contentView: ContentView!
-    var tableView: UITableView!
+    private var contentView: ContentView!
+    private var tableView: UITableView!
     
     // MARK: - Lifecycle
     
     override func loadView() {
+        
         contentView = ContentView()
         view = contentView
         
@@ -28,11 +29,9 @@ class AppleProductsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-}
-
-// MARK: - UITableViewDelegate Methods
-
-extension AppleProductsViewController: UITableViewDelegate {
+    
+    // MARK: - UITableViewDelegate Methods
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Cell tapped")
     }
@@ -56,12 +55,9 @@ extension AppleProductsViewController: UITableViewDelegate {
         
         return cell
     }
-}
-
-// MARK: - UITableViewDataSource Methods
-
-extension AppleProductsViewController: UITableViewDataSource {
-
+    
+    // MARK: - UITableViewDataSource Methods
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }

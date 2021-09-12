@@ -15,7 +15,6 @@ class ProductDetailTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-//        stackView.alignment = .leading
         stackView.distribution = .fillProportionally
         return stackView
     }()

@@ -110,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				F3A62F1F26EC4E05003669F3 /* AppleProducts.swift */,
-				339491F826EC7DCB002E4562 /* IPhone.swift */,
 				339491FA26EC7DE3002E4562 /* IPad.swift */,
+				339491F826EC7DCB002E4562 /* IPhone.swift */,
 				339491FC26EC7DF3002E4562 /* Mac.swift */,
 			);
 			path = Model;
