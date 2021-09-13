@@ -33,7 +33,19 @@ class AppleProductsViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - UITableViewDelegate Methods
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Cell tapped")
+        switch indexPath.section {
+        case 0:
+            let mac = appleProducts.macs[indexPath.row]
+            print("Selected a \(mac.name) that costs \(mac.price)")
+        case 1:
+            let iPhone = appleProducts.iPhones[indexPath.row]
+            print("Selected a \(iPhone.name) that costs \(iPhone.price)")
+        case 2:
+            let iPad = appleProducts.iPads[indexPath.row]
+            print("Selected a \(iPad.name) that costs \(iPad.price)")
+        default:
+            return
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

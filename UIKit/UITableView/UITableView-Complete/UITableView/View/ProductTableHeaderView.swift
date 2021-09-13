@@ -54,6 +54,7 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
     private func setupUI() {
         
         contentView.backgroundColor = UIColor(named: "Cream")
+        
         contentView.addSubview(headerLabel)
         contentView.addSubview(bottomLineView)
         
