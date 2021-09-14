@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppleProductsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AppleProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Class Properties
     
@@ -30,7 +30,7 @@ class AppleProductsViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
     }
     
-    // MARK: - UITableViewDelegate Methods
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
@@ -49,33 +49,32 @@ class AppleProductsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProductTableHeaderView") as? ProductTableHeaderView else {
+        
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProductTableHeaderView") as? ProductTableHeaderView else {
             return nil
         }
         
         switch section {
         case 0:
-            cell.headerTitle = "Macs"
+            headerView.headerTitle = "Macs"
         case 1:
-            cell.headerTitle = "iPhones"
+            headerView.headerTitle = "iPhones"
         case 2:
-            cell.headerTitle = "iPads"
+            headerView.headerTitle = "iPads"
         default:
             return nil
         }
         
-        
-        return cell
+        return headerView
     }
     
-    // MARK: - UITableViewDataSource Methods
+    // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         switch section {
         case 0:
             return appleProducts.macs.count
@@ -87,7 +86,7 @@ class AppleProductsViewController: UIViewController, UITableViewDelegate, UITabl
             return 1
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailTableViewCell", for: indexPath) as? ProductDetailTableViewCell else {

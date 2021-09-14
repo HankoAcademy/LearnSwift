@@ -2,16 +2,16 @@
 //  ProductDetailTableViewCell.swift
 //  UITableView
 //
-//  Created by Han  on 9/11/21.
+//  Created by Hannie Kim on 9/13/21.
 //
 
 import UIKit
 
 class ProductDetailTableViewCell: UITableViewCell {
+
+    // MARK: - UI Properties
     
-    // MARK: - UI Component Declarations
-    
-    private var stackView: UIStackView = {
+    private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -38,39 +38,34 @@ class ProductDetailTableViewCell: UITableViewCell {
     }()
     
     // MARK: - Initializers
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setupUI()        
+        setUpUI()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        setupUI()
+        fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - UI Configuration
-
-    private func setupUI() {
+    // MARK: - UI Setup
+    
+    private func setUpUI() {
         
         contentView.backgroundColor = UIColor(named: "Cream")
         
         stackView.addArrangedSubview(itemTitleLabel)
         stackView.addArrangedSubview(itemPriceLabel)
-                                
+        
         contentView.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24)
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
         ])
-        
-        itemPriceLabel.setContentHuggingPriority(.required, for: .horizontal)
-        itemPriceLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
     
     func update(itemTitle: String, itemPrice: Double) {

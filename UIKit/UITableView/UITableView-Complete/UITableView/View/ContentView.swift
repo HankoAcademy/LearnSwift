@@ -15,12 +15,11 @@ class ContentView: UIView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor(named: "Cream")
-//        tableView.layer.cornerRadius = 20
-//        tableView.allowsSelection = false        
         tableView.register(ProductDetailTableViewCell.self, forCellReuseIdentifier: "ProductDetailTableViewCell")
         tableView.register(ProductTableHeaderView.self, forHeaderFooterViewReuseIdentifier: "ProductTableHeaderView")
         return tableView
     }()
+    
     
     // MARK: - Initializers
     

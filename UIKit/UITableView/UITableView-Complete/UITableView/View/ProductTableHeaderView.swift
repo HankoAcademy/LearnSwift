@@ -2,7 +2,7 @@
 //  ProductTableHeaderView.swift
 //  UITableView
 //
-//  Created by Han on 9/10/21.
+//  Created by Hannie Kim on 9/14/21.
 //
 
 import UIKit
@@ -31,10 +31,10 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
     }()
     
     private let bottomLineView: UIView = {
-        let line = UIView()
-        line.translatesAutoresizingMaskIntoConstraints = false
-        line.backgroundColor = UIColor(named: "Navy")
-        return line
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: "Navy")
+        return view
     }()
     
     // MARK: - Initializers
@@ -42,7 +42,7 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
-        setupUI()
+        setUpUI()
     }
     
     required init?(coder: NSCoder) {
@@ -51,7 +51,7 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - UI Setup
     
-    private func setupUI() {
+    private func setUpUI() {
         
         contentView.backgroundColor = UIColor(named: "Cream")
         
@@ -59,14 +59,14 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
         contentView.addSubview(bottomLineView)
         
         NSLayoutConstraint.activate([
-            headerLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             headerLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
+            headerLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             headerLabel.bottomAnchor.constraint(equalTo: bottomLineView.topAnchor, constant: -16),
             
             bottomLineView.leadingAnchor.constraint(equalTo: headerLabel.leadingAnchor),
+            bottomLineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             bottomLineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            bottomLineView.heightAnchor.constraint(equalToConstant: 1),
-            bottomLineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            bottomLineView.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
 }
