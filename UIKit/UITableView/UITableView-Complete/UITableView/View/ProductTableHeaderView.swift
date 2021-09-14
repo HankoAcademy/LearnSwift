@@ -21,7 +21,7 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - UI Properties
     
-    private var headerLabel: UILabel = {
+    private let headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -30,7 +30,7 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    private var bottomLineView: UIView = {
+    private let bottomLineView: UIView = {
         let line = UIView()
         line.translatesAutoresizingMaskIntoConstraints = false
         line.backgroundColor = UIColor(named: "Navy")

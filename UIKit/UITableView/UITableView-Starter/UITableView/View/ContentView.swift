@@ -11,15 +11,6 @@ class ContentView: UIView {
 
     // MARK: - UI Properties
     
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor(named: "Cream")
-//        tableView.register(ProductDetailTableViewCell.self, forCellReuseIdentifier: "ProductDetailTableViewCell")
-//        tableView.register(ProductTableHeaderView.self, forHeaderFooterViewReuseIdentifier: "ProductTableHeaderView")
-        return tableView
-    }()
-    
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -38,13 +29,5 @@ class ContentView: UIView {
     
     private func setUpViews() {
         
-        addSubview(tableView)
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
     }
 }
