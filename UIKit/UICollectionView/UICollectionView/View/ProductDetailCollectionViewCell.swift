@@ -20,7 +20,7 @@ class ProductDetailCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    private let itemTitleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -31,7 +31,7 @@ class ProductDetailCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let itemPriceLabel: UILabel = {
+    private let priceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
@@ -43,27 +43,32 @@ class ProductDetailCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.backgroundColor = .lightGray
-        
-        stackView.addArrangedSubview(itemTitleLabel)
-        stackView.addArrangedSubview(itemPriceLabel)
-                                
-        contentView.addSubview(stackView)
-        
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24)
-        ])
+        setUpUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setUpUI() {
+        
+        contentView.backgroundColor = .lightGray
+        
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(priceLabel)
+        
+        contentView.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24)
+        ])
+    }
+    
     func configure(name: String, price: Double) {
-        itemTitleLabel.text = name
-        itemPriceLabel.text = String(format: "$%.02f", price)
+        titleLabel.text = name
+        priceLabel.text = String(format: "$%.02f", price)
     }
 }

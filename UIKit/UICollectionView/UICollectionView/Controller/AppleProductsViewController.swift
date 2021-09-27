@@ -8,15 +8,28 @@
 import UIKit
 
 class AppleProductsViewController: UIViewController {
-    
+
     // MARK: Class Properties
     
     let appleProducts: AppleProducts
     
     // MARK: - UI Properties
     
-    private var contentView: ContentView!
-    private var collectionView: UICollectionView!
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: view.frame.size.width/3.5, height: view.frame.size.width/3)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(ProductDetailCollectionViewCell.self, forCellWithReuseIdentifier: ProductDetailCollectionViewCell.identifier)
+        collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
+        collectionView.register(FooterCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterCollectionReusableView.identifier)
+        return collectionView
+    }()
+    
+    // MARK: - Initializer
     
     init(appleProducts: AppleProducts) {
         self.appleProducts = appleProducts
@@ -30,21 +43,58 @@ class AppleProductsViewController: UIViewController {
     
     // MARK: - Lifecycle
     
-    override func loadView() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        contentView = ContentView()
-        view = contentView
+        setUpUI()
+    }
+    
+    private func setUpUI() {
         
-        collectionView = contentView.collectionView
-//        collectionView.delegate = self
+        view.backgroundColor = .white
+        
+        collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .white
+        
+        view.addSubview(collectionView)
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 }
 
 extension AppleProductsViewController: UICollectionViewDataSource {
-        
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return ProductType.allCases.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductDetailCollectionViewCell.identifier, for: indexPath) as? ProductDetailCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        switch ProductType(rawValue: indexPath.section) {
+        case .macs:
+            let mac = appleProducts.macs[indexPath.row]
+            cell.configure(name: mac.name, price: mac.price)
+            return cell
+        case .iphone:
+            let iPhone = appleProducts.iPhones[indexPath.row]
+            cell.configure(name: iPhone.name, price: iPhone.price)
+            return cell
+        case .ipad:
+            let iPad = appleProducts.iPads[indexPath.row]
+            cell.configure(name: iPad.name, price: iPad.price)
+            return cell
+        case .none:
+            return UICollectionViewCell()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -61,59 +111,61 @@ extension AppleProductsViewController: UICollectionViewDataSource {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductDetailCollectionViewCell.identifier, for: indexPath) as? ProductDetailCollectionViewCell else {
-            assertionFailure("Expected to dequeue \(ProductDetailCollectionViewCell.self) but found nil")
-            return UICollectionViewCell()
-        }
-        
-        switch ProductType(rawValue: indexPath.section) {
-        case .macs:
-            let mac = appleProducts.macs[indexPath.row]
-            cell.configure(name: mac.name, price: mac.price)
-            return cell
-        case .iphone:
-            let iphone = appleProducts.iPhones[indexPath.row]
-            cell.configure(name: iphone.name, price: iphone.price)
-            return cell
-        case .ipad:
-            let ipad = appleProducts.iPads[indexPath.row]
-            cell.configure(name: ipad.name, price: ipad.price)
-            return cell
-        case .none:
-            return UICollectionViewCell()
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as? HeaderCollectionReusableView else {
-            assertionFailure("Could not dequeue \(HeaderCollectionReusableView.self)")
-            return UICollectionReusableView()
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as? HeaderCollectionReusableView else {
+                return UICollectionReusableView()
+            }
+            
+            switch ProductType(rawValue: indexPath.section) {
+            case .macs:
+                headerView.configure(headerText: "Macs")
+            case .iphone:
+                headerView.configure(headerText: "iPhones")
+            case .ipad:
+                headerView.configure(headerText: "iPads")
+            case .none:
+                return UICollectionReusableView()
+            }
+            
+            return headerView
+        }
+        else if kind == UICollectionView.elementKindSectionFooter {
+            guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterCollectionReusableView.identifier, for: indexPath) as? FooterCollectionReusableView else {
+                return UICollectionReusableView()
+            }
+            
+            switch ProductType(rawValue: indexPath.section) {
+            case .macs:
+                footerView.configure(headerText: "Macs Footer")
+            case .iphone:
+                footerView.configure(headerText: "iPhones Footer")
+            case .ipad:
+                footerView.configure(headerText: "iPads Footer")
+            case .none:
+                return UICollectionReusableView()
+            }
+            
+            return footerView
         }
         
-        switch ProductType(rawValue: indexPath.section) {
-        case .macs:
-            headerView.configure(headerText: "Macs")
-        case .iphone:
-            headerView.configure(headerText: "iPhones")
-        case .ipad:
-            headerView.configure(headerText: "iPads")
-        case .none:
-            return UICollectionReusableView()
-        }
-        
-        return headerView
+        return UICollectionReusableView()
     }
 }
 
-//extension AppleProductsViewController: UICollectionViewDelegate {
-//
-//}
-//
 extension AppleProductsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.size.width, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.size.width, height: 50)
+    }
+}
+
+extension AppleProductsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Section: \(indexPath.section) Row: \(indexPath.row)")
     }
 }

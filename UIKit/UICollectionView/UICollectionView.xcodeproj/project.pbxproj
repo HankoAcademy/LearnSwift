@@ -16,9 +16,8 @@
 		F375964427002B6800B052DB /* Mac.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375964027002B6800B052DB /* Mac.swift */; };
 		F375964527002B6800B052DB /* IPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375964127002B6800B052DB /* IPad.swift */; };
 		F375964627002B6800B052DB /* IPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375964227002B6800B052DB /* IPhone.swift */; };
-		F375964827002B9700B052DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375964727002B9700B052DB /* ContentView.swift */; };
-		F375964A2700386D00B052DB /* ProductDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37596492700386D00B052DB /* ProductDetailCollectionViewCell.swift */; };
-		F375964C2700DCB400B052DB /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375964B2700DCB400B052DB /* HeaderCollectionReusableView.swift */; };
+		F375964E270112E500B052DB /* ProductDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375964D270112E500B052DB /* ProductDetailCollectionViewCell.swift */; };
+		F375965027011DDC00B052DB /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375964F27011DDC00B052DB /* HeaderCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +32,8 @@
 		F375964027002B6800B052DB /* Mac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mac.swift; sourceTree = "<group>"; };
 		F375964127002B6800B052DB /* IPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPad.swift; sourceTree = "<group>"; };
 		F375964227002B6800B052DB /* IPhone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPhone.swift; sourceTree = "<group>"; };
-		F375964727002B9700B052DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F37596492700386D00B052DB /* ProductDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailCollectionViewCell.swift; sourceTree = "<group>"; };
-		F375964B2700DCB400B052DB /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		F375964D270112E500B052DB /* ProductDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		F375964F27011DDC00B052DB /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +97,8 @@
 		F375963D27002A5F00B052DB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F375964727002B9700B052DB /* ContentView.swift */,
-				F37596492700386D00B052DB /* ProductDetailCollectionViewCell.swift */,
-				F375964B2700DCB400B052DB /* HeaderCollectionReusableView.swift */,
+				F375964D270112E500B052DB /* ProductDetailCollectionViewCell.swift */,
+				F375964F27011DDC00B052DB /* HeaderCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,14 +185,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F375964427002B6800B052DB /* Mac.swift in Sources */,
+				F375965027011DDC00B052DB /* HeaderCollectionReusableView.swift in Sources */,
 				F375964327002B6800B052DB /* AppleProducts.swift in Sources */,
-				F375964A2700386D00B052DB /* ProductDetailCollectionViewCell.swift in Sources */,
-				F375964827002B9700B052DB /* ContentView.swift in Sources */,
 				F375962C2700298200B052DB /* AppleProductsViewController.swift in Sources */,
+				F375964E270112E500B052DB /* ProductDetailCollectionViewCell.swift in Sources */,
 				F37596282700298200B052DB /* AppDelegate.swift in Sources */,
 				F375962A2700298200B052DB /* SceneDelegate.swift in Sources */,
 				F375964627002B6800B052DB /* IPhone.swift in Sources */,
-				F375964C2700DCB400B052DB /* HeaderCollectionReusableView.swift in Sources */,
 				F375964527002B6800B052DB /* IPad.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
