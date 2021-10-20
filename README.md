@@ -14,5 +14,8 @@ Example projects to help you better under iOS Development
 - [Alamofire](Networking/Alamofire)
 
 ## UIKit 🎨
-- [UIScrollView](UIKit/UIScrollView)
+- [Child View Controller](UIKit/Child View Controller)
+- [UINavigationController](UIKit/UINavigationController)
+- [UICollectionView](UIKit/UICollectionView)
 - [UITableView](UIKit/UITableView)
+- [UIScrollView](UIKit/UIScrollView)
