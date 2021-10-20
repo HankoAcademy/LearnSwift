@@ -6,9 +6,13 @@ Example projects to help you better under iOS Development
 - [Protocols](CommunicationPatterns/ProtocolOrientedProgramming)
 - [Delegation Pattern](CommunicationPatterns/Delegation)
 
+## Core Data 💿
+- [CoreData](CoreData/ToDoList)
+
+## Networking 🕸
+- [URLSession](Networking/URLSession)
+- [Alamofire](Networking/Alamofire)
+
 ## UIKit 🎨
 - [UIScrollView](UIKit/UIScrollView)
 - [UITableView](UIKit/UITableView)
-
-## Core Data 💿
-- [CoreData](CoreData/ToDoList)
