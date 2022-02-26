@@ -18,3 +18,4 @@ Example projects to help you better under iOS Development
 - [UICollectionView](UIKit/UICollectionView)
 - [UITableView](UIKit/UITableView)
 - [UIScrollView](UIKit/UIScrollView)
+- [SFSymbols](UIKit/SFSymbols)
