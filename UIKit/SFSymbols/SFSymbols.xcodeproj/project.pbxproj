@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F34DCF6D28EB6FB700AA1A93 /* StarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DCF6C28EB6FB700AA1A93 /* StarterViewController.swift */; };
 		F3C11D9B27CACC6100AFA192 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C11D9A27CACC6100AFA192 /* AppDelegate.swift */; };
 		F3C11D9D27CACC6100AFA192 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C11D9C27CACC6100AFA192 /* SceneDelegate.swift */; };
 		F3C11D9F27CACC6100AFA192 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C11D9E27CACC6100AFA192 /* ViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F34DCF6C28EB6FB700AA1A93 /* StarterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterViewController.swift; sourceTree = "<group>"; };
 		F3C11D9727CACC6100AFA192 /* SFSymbols.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFSymbols.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C11D9A27CACC6100AFA192 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3C11D9C27CACC6100AFA192 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				F3C11D9A27CACC6100AFA192 /* AppDelegate.swift */,
 				F3C11D9C27CACC6100AFA192 /* SceneDelegate.swift */,
+				F34DCF6C28EB6FB700AA1A93 /* StarterViewController.swift */,
 				F3C11D9E27CACC6100AFA192 /* ViewController.swift */,
 				F3C11DA327CACC6200AFA192 /* Assets.xcassets */,
 				F3C11DA527CACC6200AFA192 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			files = (
 				F3C11D9F27CACC6100AFA192 /* ViewController.swift in Sources */,
 				F3C11D9B27CACC6100AFA192 /* AppDelegate.swift in Sources */,
+				F34DCF6D28EB6FB700AA1A93 /* StarterViewController.swift in Sources */,
 				F3C11D9D27CACC6100AFA192 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  StarterViewController.swift
 //  SFSymbols
 //
-//  Created by Hannie Kim on 2/26/22.
+//  Created by Hannie Kim on 10/3/22.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+class StarterViewController: UIViewController {
+
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         
         imageViewWithImageAsset()
-        buttonConfiguration()
+        addButton()
         
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(button)
@@ -57,34 +57,29 @@ class ViewController: UIViewController {
         imageView.image = UIImage(named: "shareIcon")
     }
     
+    // button using placeholder image from Assets catalog
+    func addButton() {
+        button.setImage(UIImage(named: "shareIcon"), for: .normal)
+    }
+    
     // Set SFSymbol to UIImage
     func imageWithSFSymbol() {
-        let bookmarkImage = UIImage(systemName: "bookmark.circle")
-        imageView.image = bookmarkImage
+        
     }
     
     // Setting image with scale configuration
     func imageWithScaleConfiguration() {
-        let largeConfiguration = UIImage.SymbolConfiguration(scale: .large)
-        let largeBookmarkImage = UIImage(systemName: "bookmark.circle", withConfiguration: largeConfiguration)
-        imageView.image = largeBookmarkImage
+        
     }
     
     // Setting image with weight configuration
     func imageWithWeightConfiguration() {
-        let boldConfiguration = UIImage.SymbolConfiguration(weight: .bold)
-        let boldBookmarkImage = UIImage(systemName: "bookmark.circle", withConfiguration: boldConfiguration)
-        imageView.image = boldBookmarkImage
+        
     }
     
     // changing color. this can be done whether or not you're using SFSymbols for images
     func changeColor() {
-        // Option 1: change color on UIImage
-        let image = UIImage(systemName: "bookmark.circle")?.withTintColor(.green, renderingMode: .alwaysOriginal)
-        imageView.image = image
         
-        // Option 2: change color on UIImageView
-//        imageView.tintColor = .green
     }
     
     // Adding configuration to image view instead of image
@@ -95,23 +90,13 @@ class ViewController: UIViewController {
         imageView.preferredSymbolConfiguration = largeConfiguration
     }
     
-    // Button with symbol configuration
+    // Adding configuration to button instead of image
     func buttonConfiguration() {
-        let sunImage = UIImage(systemName: "sun.max")
-        button.setImage(sunImage, for: .normal)
         
-        let boldConfiguration = UIImage.SymbolConfiguration(weight: .bold)
-        button.setPreferredSymbolConfiguration(boldConfiguration, forImageIn: .normal)
     }
     
     // Multiple configurations
     func multipleConfigurations() {
-        let largeConfiguration = UIImage.SymbolConfiguration(scale: .large)
-        let lightConfiguration = UIImage.SymbolConfiguration(weight: .ultraLight)
-        let lightLargeConfiguration = largeConfiguration.applying(lightConfiguration)
-        let heartImage = UIImage(systemName: "bookmark.circle")
-        imageView.image = heartImage
-        imageView.preferredSymbolConfiguration = lightLargeConfiguration
+        
     }
 }
-
