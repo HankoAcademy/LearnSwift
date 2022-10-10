@@ -72,15 +72,15 @@ class ViewController: UIViewController {
     
     // Setting image with weight configuration
     func imageWithWeightConfiguration() {
-        let boldConfiguration = UIImage.SymbolConfiguration(weight: .bold)
-        let boldBookmarkImage = UIImage(systemName: "bookmark.circle", withConfiguration: boldConfiguration)
-        imageView.image = boldBookmarkImage
+        let lightConfiguration = UIImage.SymbolConfiguration(weight: .ultraLight)
+        let lightBookmarkImage = UIImage(systemName: "bookmark.circle", withConfiguration: lightConfiguration)
+        imageView.image = lightBookmarkImage
     }
     
     // changing color. this can be done whether or not you're using SFSymbols for images
     func changeColor() {
         // Option 1: change color on UIImage
-        let image = UIImage(systemName: "bookmark.circle")?.withTintColor(.green, renderingMode: .alwaysOriginal)
+        let image = UIImage(systemName: "sun.min")?.withTintColor(.green, renderingMode: .alwaysOriginal)
         imageView.image = image
         
         // Option 2: change color on UIImageView
@@ -107,11 +107,12 @@ class ViewController: UIViewController {
     // Multiple configurations
     func multipleConfigurations() {
         let largeConfiguration = UIImage.SymbolConfiguration(scale: .large)
-        let lightConfiguration = UIImage.SymbolConfiguration(weight: .ultraLight)
-        let lightLargeConfiguration = largeConfiguration.applying(lightConfiguration)
-        let heartImage = UIImage(systemName: "bookmark.circle")
-        imageView.image = heartImage
-        imageView.preferredSymbolConfiguration = lightLargeConfiguration
+        let boldConfiguration = UIImage.SymbolConfiguration(weight: .bold)
+        let boldLargeConfiguration = largeConfiguration.applying(boldConfiguration)
+        
+        let bookmarkCircleImage = UIImage(systemName: "bookmark.circle")
+        imageView.image = bookmarkCircleImage
+        imageView.preferredSymbolConfiguration = boldLargeConfiguration
     }
 }
 

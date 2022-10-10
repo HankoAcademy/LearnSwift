@@ -84,10 +84,7 @@ class StarterViewController: UIViewController {
     
     // Adding configuration to image view instead of image
     func imageViewImageConfiguration() {
-        let largeConfiguration = UIImage.SymbolConfiguration(scale: .large)
-        let bookmarkImage = UIImage(systemName: "bookmark.circle")
-        imageView.image = bookmarkImage
-        imageView.preferredSymbolConfiguration = largeConfiguration
+        
     }
     
     // Adding configuration to button instead of image
