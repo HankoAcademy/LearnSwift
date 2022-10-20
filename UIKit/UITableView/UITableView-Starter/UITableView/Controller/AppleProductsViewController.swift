@@ -9,20 +9,11 @@ import UIKit
 
 class AppleProductsViewController: UIViewController {
     
-    // MARK: - Class Properties
+    // MARK: - Lifecycle Methods
     
-    private let appleProducts = AppleProducts()
-    
-    // MARK: - UI Properties
-    
-    private var contentView: ContentView!
-    
-    // MARK: - Lifecycle
-    
-    override func loadView() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        contentView = ContentView()
-        
-        view = contentView
+        view.backgroundColor = UIColor(named: "Cream")
     }
 }
