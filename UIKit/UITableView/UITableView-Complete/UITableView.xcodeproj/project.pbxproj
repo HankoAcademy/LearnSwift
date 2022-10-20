@@ -17,7 +17,6 @@
 		F3A62F0A26EC2CC3003669F3 /* AppleProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A62F0926EC2CC3003669F3 /* AppleProductsViewController.swift */; };
 		F3A62F0F26EC2CC4003669F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A62F0E26EC2CC4003669F3 /* Assets.xcassets */; };
 		F3A62F1226EC2CC4003669F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A62F1026EC2CC4003669F3 /* LaunchScreen.storyboard */; };
-		F3A62F1E26EC2D4C003669F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A62F1D26EC2D4C003669F3 /* ContentView.swift */; };
 		F3A62F2026EC4E05003669F3 /* AppleProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A62F1F26EC4E05003669F3 /* AppleProducts.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 		F3A62F0E26EC2CC4003669F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3A62F1126EC2CC4003669F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A62F1326EC2CC4003669F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F3A62F1D26EC2D4C003669F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F3A62F1F26EC4E05003669F3 /* AppleProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProducts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,7 +97,6 @@
 		F3A62F1B26EC2CD2003669F3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F3A62F1D26EC2D4C003669F3 /* ContentView.swift */,
 				F3A3738B26F0267400718F1D /* ProductDetailTableViewCell.swift */,
 				F3A3738F26F0F40800718F1D /* ProductTableHeaderView.swift */,
 			);
@@ -194,7 +191,6 @@
 				339491FD26EC7DF3002E4562 /* Mac.swift in Sources */,
 				F3A3738C26F0267400718F1D /* ProductDetailTableViewCell.swift in Sources */,
 				F3A62F2026EC4E05003669F3 /* AppleProducts.swift in Sources */,
-				F3A62F1E26EC2D4C003669F3 /* ContentView.swift in Sources */,
 				F3A62F0826EC2CC3003669F3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,9 @@ import UIKit
 
 class ProductTableHeaderView: UITableViewHeaderFooterView {
 
-    // MARK: - Class Properties
+    // MARK: - Properties
+    
+    static let cellID = "ProductTableHeaderView"
     
     var headerTitle: String = "" {
         didSet {
@@ -18,8 +20,6 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
             headerLabel.attributedText = attributedString
         }
     }
-    
-    // MARK: - UI Properties
     
     private let headerLabel: UILabel = {
         let label = UILabel()
@@ -53,7 +53,7 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
     
     private func setUpUI() {
         
-        contentView.backgroundColor = UIColor(named: "Cream")
+//        contentView.backgroundColor = UIColor(named: "Cream")
         
         contentView.addSubview(headerLabel)
         contentView.addSubview(bottomLineView)

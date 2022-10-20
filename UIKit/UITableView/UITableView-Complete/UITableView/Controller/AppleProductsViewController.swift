@@ -8,101 +8,135 @@
 import UIKit
 
 class AppleProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    // MARK: - Class Properties
-    
-    private let appleProducts = AppleProducts()
-    
-    // MARK: - UI Properties
-    
-    private var contentView: ContentView!
-    private var tableView: UITableView!
-    
-    // MARK: - Lifecycle
-    
-    override func loadView() {
+    enum SectionType: Int {
+        case mac, iphone, ipad
         
-        contentView = ContentView()
-        view = contentView
-        
-        tableView = contentView.tableView
-        tableView.delegate = self
-        tableView.dataSource = self
+        var title: String {
+            switch self {
+            case .mac:
+                return "Macs"
+            case .iphone:
+                return "iPhones"
+            case .ipad:
+                return "iPads"
+            }
+        }
     }
     
-    // MARK: - UITableViewDelegate
+    // MARK: - Properties
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .clear
+        tableView.register(ProductDetailTableViewCell.self, forCellReuseIdentifier: ProductDetailTableViewCell.cellID)
+        tableView.register(ProductTableHeaderView.self, forHeaderFooterViewReuseIdentifier: ProductTableHeaderView.cellID)
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
+    }()
+    
+    private let appleProducts: AppleProducts
+    
+    // MARK: - Initializer
+    
+    init(appleProducts: AppleProducts = AppleProducts()) {
+        self.appleProducts = appleProducts
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        nil
+    }
+    
+    // MARK: - Lifecycle Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(named: "Cream")
+        setUpTableView()
+    }
+    
+    // MARK: - UI Setup
+    
+    private func setUpTableView() {
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
+    // MARK: - UITableViewDelegate Methods
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
+        switch SectionType(rawValue: indexPath.section) {
+        case .mac:
             let mac = appleProducts.macs[indexPath.row]
             print("Selected a \(mac.name) that costs \(mac.price)")
-        case 1:
+        case .iphone:
             let iPhone = appleProducts.iPhones[indexPath.row]
             print("Selected a \(iPhone.name) that costs \(iPhone.price)")
-        case 2:
+        case .ipad:
             let iPad = appleProducts.iPads[indexPath.row]
             print("Selected a \(iPad.name) that costs \(iPad.price)")
-        default:
+        case .none:
             return
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProductTableHeaderView") as? ProductTableHeaderView else {
+        guard
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProductTableHeaderView") as? ProductTableHeaderView,
+            let sectionType = SectionType(rawValue: section)
+        else {
             return nil
         }
         
-        switch section {
-        case 0:
-            headerView.headerTitle = "Macs"
-        case 1:
-            headerView.headerTitle = "iPhones"
-        case 2:
-            headerView.headerTitle = "iPads"
-        default:
-            return nil
-        }
+        headerView.headerTitle = sectionType.title
         
         return headerView
     }
     
-    // MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        switch SectionType(rawValue: section) {
+        case .mac:
             return appleProducts.macs.count
-        case 1:
+        case .iphone:
             return appleProducts.iPhones.count
-        case 2:
+        case .ipad:
             return appleProducts.iPads.count
-        default:
-            return 1
+        case .none:
+            return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailTableViewCell", for: indexPath) as? ProductDetailTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductDetailTableViewCell.cellID, for: indexPath) as? ProductDetailTableViewCell else {
             return UITableViewCell()
         }
         
         var product: ProductDetail?
         
-        switch indexPath.section {
-        case 0:
+        switch SectionType(rawValue: indexPath.section) {
+        case .mac:
             product = appleProducts.macs[indexPath.row]
-        case 1:
+        case .iphone:
             product = appleProducts.iPhones[indexPath.row]
-        case 2:
+        case .ipad:
             product = appleProducts.iPads[indexPath.row]
-        default:
+        case .none:
             return UITableViewCell()
         }
         

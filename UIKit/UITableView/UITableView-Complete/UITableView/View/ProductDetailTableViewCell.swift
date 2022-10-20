@@ -9,7 +9,9 @@ import UIKit
 
 class ProductDetailTableViewCell: UITableViewCell {
 
-    // MARK: - UI Properties
+    // MARK: - Properties
+    
+    static let cellID = "ProductDetailTableViewCell"
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -53,7 +55,7 @@ class ProductDetailTableViewCell: UITableViewCell {
     
     private func setUpUI() {
         
-        contentView.backgroundColor = UIColor(named: "Cream")
+        backgroundColor = .clear
         
         stackView.addArrangedSubview(itemTitleLabel)
         stackView.addArrangedSubview(itemPriceLabel)
