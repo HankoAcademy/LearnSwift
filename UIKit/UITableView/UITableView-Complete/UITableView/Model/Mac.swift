@@ -8,7 +8,6 @@
 import Foundation
 
 struct Mac: ProductDetail {
-    
     var name: String
     var price: Double
     

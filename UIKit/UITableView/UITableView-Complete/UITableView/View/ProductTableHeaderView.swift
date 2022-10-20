@@ -13,14 +13,6 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
     
     static let cellID = "ProductTableHeaderView"
     
-    var headerTitle: String = "" {
-        didSet {
-            let attributedString = NSMutableAttributedString(string: headerTitle)
-            attributedString.addAttribute(NSAttributedString.Key.kern, value: 14, range: NSRange(location: 0, length: attributedString.length))
-            headerLabel.attributedText = attributedString
-        }
-    }
-    
     private let headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -53,8 +45,6 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
     
     private func setUpUI() {
         
-//        contentView.backgroundColor = UIColor(named: "Cream")
-        
         contentView.addSubview(headerLabel)
         contentView.addSubview(bottomLineView)
         
@@ -68,5 +58,11 @@ class ProductTableHeaderView: UITableViewHeaderFooterView {
             bottomLineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             bottomLineView.heightAnchor.constraint(equalToConstant: 1)
         ])
+    }
+    
+    func configure(headerTitle: String) {
+        let attributedString = NSMutableAttributedString(string: headerTitle)
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: 14, range: NSRange(location: 0, length: attributedString.length))
+        headerLabel.attributedText = attributedString
     }
 }

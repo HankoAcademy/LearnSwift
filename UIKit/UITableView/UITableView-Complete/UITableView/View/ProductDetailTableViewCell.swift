@@ -70,8 +70,7 @@ class ProductDetailTableViewCell: UITableViewCell {
         ])
     }
     
-    func update(itemTitle: String, itemPrice: Double) {
-        
+    func configure(itemTitle: String, itemPrice: Double) {
         itemTitleLabel.text = itemTitle
         itemPriceLabel.text = String(format: "$%.02f", itemPrice)
     }

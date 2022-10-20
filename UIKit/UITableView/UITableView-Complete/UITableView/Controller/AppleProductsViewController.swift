@@ -8,7 +8,7 @@
 import UIKit
 
 class AppleProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    enum SectionType: Int {
+    enum SectionType: Int, CaseIterable {
         case mac, iphone, ipad
         
         var title: String {
@@ -97,7 +97,7 @@ class AppleProductsViewController: UIViewController, UITableViewDataSource, UITa
             return nil
         }
         
-        headerView.headerTitle = sectionType.title
+        headerView.configure(headerTitle: sectionType.title)
         
         return headerView
     }
@@ -105,7 +105,7 @@ class AppleProductsViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - UITableViewDataSource Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return SectionType.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -141,7 +141,7 @@ class AppleProductsViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         if let product = product {
-            cell.update(itemTitle: product.name, itemPrice: product.price)
+            cell.configure(itemTitle: product.name, itemPrice: product.price)
         }
         
         return cell

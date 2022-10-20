@@ -8,7 +8,6 @@
 import Foundation
 
 struct IPad: ProductDetail {
-    
     var name: String
     var price: Double
     
