@@ -36,7 +36,7 @@ class AppleProductsViewController: UIViewController, UITableViewDataSource, UITa
         return tableView
     }()
     
-    private let appleProducts: AppleProducts
+    private var appleProducts: AppleProducts
     
     // MARK: - Initializer
     
@@ -56,6 +56,15 @@ class AppleProductsViewController: UIViewController, UITableViewDataSource, UITa
         
         view.backgroundColor = UIColor(named: "Cream")
         setUpTableView()
+        
+        // Use the edit button provided by the view controller
+        navigationItem.rightBarButtonItem = editButtonItem
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: true)
+
+        tableView.setEditing(editing, animated: true)
     }
     
     // MARK: - UI Setup
@@ -102,6 +111,25 @@ class AppleProductsViewController: UIViewController, UITableViewDataSource, UITa
         return headerView
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // 1. Delete the data from data source i.e. appleProducts array
+            switch SectionType(rawValue: indexPath.section) {
+            case .mac:
+                appleProducts.macs.remove(at: indexPath.row)
+            case .iphone:
+                appleProducts.iPhones.remove(at: indexPath.row)
+            case .ipad:
+                appleProducts.iPads.remove(at: indexPath.row)
+            case .none:
+                return
+            }
+            
+            // 2. Delete the row
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
     // MARK: - UITableViewDataSource Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -127,7 +155,7 @@ class AppleProductsViewController: UIViewController, UITableViewDataSource, UITa
             return UITableViewCell()
         }
         
-        var product: ProductDetail?
+        var product: Product?
         
         switch SectionType(rawValue: indexPath.section) {
         case .mac:
@@ -145,5 +173,53 @@ class AppleProductsViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         return cell
+    }
+    
+    // Allows moving of cells
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        var movingProduct: Product?
+        
+        // 1. Find the product object that is moving
+
+        switch SectionType(rawValue: sourceIndexPath.section) {
+        case .mac:
+            movingProduct = appleProducts.macs[sourceIndexPath.row]
+        case .iphone:
+            movingProduct = appleProducts.iPhones[sourceIndexPath.row]
+        case .ipad:
+            movingProduct = appleProducts.iPads[sourceIndexPath.row]
+        case .none:
+            break
+        }
+        
+        guard let movingProduct = movingProduct else { return }
+        
+        // 2. Add the object to the destination product array
+        switch SectionType(rawValue: destinationIndexPath.section) {
+        case .mac:
+            appleProducts.macs.insert(movingProduct, at: destinationIndexPath.row)
+        case .iphone:
+            appleProducts.iPhones.insert(movingProduct, at: destinationIndexPath.row)
+        case .ipad:
+            appleProducts.iPads.insert(movingProduct, at: destinationIndexPath.row)
+        case .none:
+            break
+        }
+        
+        // 3. Delete the row that the product was moved from
+        switch SectionType(rawValue: sourceIndexPath.section) {
+        case .mac:
+            appleProducts.macs.remove(at: sourceIndexPath.row)
+        case .iphone:
+            appleProducts.iPhones.remove(at: sourceIndexPath.row)
+        case .ipad:
+            appleProducts.iPads.remove(at: sourceIndexPath.row)
+        case .none:
+            break
+        }
     }
 }
