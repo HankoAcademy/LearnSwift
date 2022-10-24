@@ -57,14 +57,55 @@ class AppleProductsViewController: UIViewController, UITableViewDataSource, UITa
         view.backgroundColor = UIColor(named: "Cream")
         setUpTableView()
         
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
         // Use the edit button provided by the view controller
-        navigationItem.rightBarButtonItem = editButtonItem
+        navigationItem.rightBarButtonItems = [
+            editButtonItem,
+            addButton
+        ]
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: true)
 
         tableView.setEditing(editing, animated: true)
+    }
+    
+    @objc func addButtonPressed() {
+        let alertController = UIAlertController(
+            title: "Add an Apple Product",
+            message: "Select the type of product you'd like to add",
+            preferredStyle: .actionSheet
+        )
+        
+        alertController.addAction(
+            UIAlertAction(
+                title: SectionType.mac.title,
+                style: .default
+            ) { _ in
+                self.presentAlert(for: .mac)
+            }
+        )
+        
+        alertController.addAction(
+            UIAlertAction(
+                title: SectionType.iphone.title,
+                style: .default
+            ) { _ in
+                self.presentAlert(for: .iphone)
+            }
+        )
+        
+        alertController.addAction(
+            UIAlertAction(
+                title: SectionType.ipad.title,
+                style: .default
+            ) { _ in
+                self.presentAlert(for: .ipad)
+            }
+        )
+        
+        present(alertController, animated: true)
     }
     
     // MARK: - UI Setup
@@ -78,6 +119,47 @@ class AppleProductsViewController: UIViewController, UITableViewDataSource, UITa
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+    }
+    
+    // MARK: - Alert Helper
+    
+    private func presentAlert(for section: SectionType) {
+        let alertController = UIAlertController(title: "Enter product name and price", message: nil, preferredStyle: .alert)
+
+        alertController.addTextField { textField in
+            textField.placeholder = "Product Name"
+        }
+        
+        alertController.addTextField { textField in
+            textField.placeholder = "Product Price"
+        }
+        
+        alertController.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: .default
+            ) { alertAction in
+                let name = alertController.textFields?[0].text
+                let price = alertController.textFields?[1].text
+                
+                guard let name = name, let priceString = price, let price = Double(priceString) else { return }
+                
+                switch section {
+                case .mac:
+                    self.appleProducts.macs.append(Mac(withName: name, andPrice: price))
+                    self.tableView.insertRows(at: [IndexPath(row: self.appleProducts.macs.count - 1, section: section.rawValue)], with: .automatic)
+                case .iphone:
+                    self.appleProducts.iPhones.append(IPhone(withName: name, andPrice: price))
+                    self.tableView.insertRows(at: [IndexPath(row: self.appleProducts.iPhones.count - 1, section: section.rawValue)], with: .automatic)
+                case .ipad:
+                    self.appleProducts.iPads.append(IPad(withName: name, andPrice: price))
+                    self.tableView.insertRows(at: [IndexPath(row: self.appleProducts.iPads.count - 1, section: section.rawValue)], with: .automatic)
+                }
+            }
+        )
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+        self.present(alertController, animated: true)
     }
     
     // MARK: - UITableViewDelegate Methods

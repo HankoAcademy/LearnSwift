@@ -24,16 +24,16 @@ struct AppleProducts {
     ]
     
     var iPhones: [Product] = [
-        IPhone(withName: "iPhone 12", andPrice: 799),
-        IPhone(withName: "iPhone 12 Mini", andPrice: 699),
-        IPhone(withName: "iPhone 12 Pro", andPrice: 999),
-        IPhone(withName: "iPhone 12 Pro Max", andPrice: 1099)
+        IPhone(withName: "iPhone 14", andPrice: 799),
+        IPhone(withName: "iPhone 14 Plus", andPrice: 799),
+        IPhone(withName: "iPhone 14 Pro", andPrice: 999),
+        IPhone(withName: "iPhone 14 Pro Max", andPrice: 1099)
     ]
         
     var iPads: [Product] = [
         IPad(withName: "iPad", andPrice: 329),
         IPad(withName: "iPad Pro", andPrice: 799),
         IPad(withName: "iPad Air", andPrice: 599),
-        IPad(withName: "iPad Mini", andPrice: 399)
+        IPad(withName: "iPad Mini", andPrice: 499)
     ]
 }
