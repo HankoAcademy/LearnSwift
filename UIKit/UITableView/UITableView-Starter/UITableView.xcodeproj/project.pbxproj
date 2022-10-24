@@ -43,6 +43,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E93D5C642906307900A4433A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F3A62EF926EC2CC3003669F3 = {
 			isa = PBXGroup;
 			children = (
@@ -63,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				F3A62F1C26EC2CD4003669F3 /* Model */,
-				F3A62F1B26EC2CD2003669F3 /* View */,
+				E93D5C642906307900A4433A /* View */,
 				F3A62F1A26EC2CCF003669F3 /* Controller */,
 				F3A62F1926EC2CCA003669F3 /* Supporting Files */,
 			);
@@ -88,13 +95,6 @@
 				F3A62F0926EC2CC3003669F3 /* AppleProductsViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		F3A62F1B26EC2CD2003669F3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		F3A62F1C26EC2CD4003669F3 /* Model */ = {
