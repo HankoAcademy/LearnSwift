@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ProductDetail {
+protocol Product {
     var name: String { get }
     var price: Double { get }
     
@@ -15,7 +15,7 @@ protocol ProductDetail {
 }
 
 struct AppleProducts {
-    let macs = [
+    var macs: [Product] = [
         Mac(withName: "iMac", andPrice: 1299),
         Mac(withName: "Mac Mini", andPrice: 699),
         Mac(withName: "Mac Pro", andPrice: 5999),
@@ -23,17 +23,17 @@ struct AppleProducts {
         Mac(withName: "Macbook Air", andPrice: 999)
     ]
     
-    let iPhones = [
-        IPhone(withName: "iPhone 12", andPrice: 799),
-        IPhone(withName: "iPhone 12 Mini", andPrice: 699),
-        IPhone(withName: "iPhone 12 Pro", andPrice: 999),
-        IPhone(withName: "iPhone 12 Pro Max", andPrice: 1099)
+    var iPhones: [Product] = [
+        IPhone(withName: "iPhone 14", andPrice: 799),
+        IPhone(withName: "iPhone 14 Plus", andPrice: 799),
+        IPhone(withName: "iPhone 14 Pro", andPrice: 999),
+        IPhone(withName: "iPhone 14 Pro Max", andPrice: 1099)
     ]
         
-    let iPads = [
+    var iPads: [Product] = [
         IPad(withName: "iPad", andPrice: 329),
         IPad(withName: "iPad Pro", andPrice: 799),
         IPad(withName: "iPad Air", andPrice: 599),
-        IPad(withName: "iPad Mini", andPrice: 399)
+        IPad(withName: "iPad Mini", andPrice: 499)
     ]
 }

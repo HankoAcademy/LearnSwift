@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Mac: ProductDetail {
+struct Mac: Product {
     var name: String
     var price: Double
     
