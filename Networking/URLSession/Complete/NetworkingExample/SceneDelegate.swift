@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
-        let navigationController = UINavigationController(rootViewController: ViewAllPostsViewController())
+        let navigationController = UINavigationController(rootViewController: ViewAllBlogPostsViewController())
         window.rootViewController = navigationController
         self.window = window
     }
