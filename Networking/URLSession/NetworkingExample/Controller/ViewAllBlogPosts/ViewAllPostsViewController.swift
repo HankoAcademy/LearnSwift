@@ -127,6 +127,8 @@ final class ViewAllBlogPostsViewController: UIViewController {
         Task {
             do {
                 try await networkManager.createPost(blogPost)
+                blogPosts?.append(blogPost)
+                tableView.reloadData()
             } catch {
                 print("Failed to create blog post")
             }
