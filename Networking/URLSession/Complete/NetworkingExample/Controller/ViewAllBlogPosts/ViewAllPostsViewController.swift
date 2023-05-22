@@ -134,7 +134,7 @@ final class ViewAllBlogPostsViewController: UIViewController {
     }
 }
 
-extension ViewAllPostsViewController: UITableViewDataSource {
+extension ViewAllBlogPostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return blogPosts?.count ?? 0
     }
