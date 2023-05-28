@@ -14,6 +14,10 @@
 		F387B4E32A11AB2300A97105 /* ViewAllPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F387B4E22A11AB2300A97105 /* ViewAllPostsViewController.swift */; };
 		F387B4E62A11AD9900A97105 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F387B4E52A11AD9900A97105 /* NetworkManager.swift */; };
 		F387B4EC2A11DE2F00A97105 /* BlogPostCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F387B4EB2A11DE2F00A97105 /* BlogPostCommentsViewController.swift */; };
+		F39027762A23125F00414EB9 /* BlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39027752A23125F00414EB9 /* BlogPost.swift */; };
+		F39027792A23127F00414EB9 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39027782A23127F00414EB9 /* APIConstants.swift */; };
+		F390277B2A23154200414EB9 /* BlogPostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390277A2A23154200414EB9 /* BlogPostComment.swift */; };
+		F390277E2A23164F00414EB9 /* Common+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390277D2A23164F00414EB9 /* Common+Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		F387B4E22A11AB2300A97105 /* ViewAllPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllPostsViewController.swift; sourceTree = "<group>"; };
 		F387B4E52A11AD9900A97105 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F387B4EB2A11DE2F00A97105 /* BlogPostCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPostCommentsViewController.swift; sourceTree = "<group>"; };
+		F39027752A23125F00414EB9 /* BlogPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPost.swift; sourceTree = "<group>"; };
+		F39027782A23127F00414EB9 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		F390277A2A23154200414EB9 /* BlogPostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPostComment.swift; sourceTree = "<group>"; };
+		F390277D2A23164F00414EB9 /* Common+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Common+Error.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +66,12 @@
 		F3554024265B470300A1E29F /* NetworkingExample */ = {
 			isa = PBXGroup;
 			children = (
-				F3AFF5BA270941D600FB6ED2 /* Model */,
-				F3AFF5B9270941D200FB6ED2 /* View */,
+				F39027732A23124D00414EB9 /* Model */,
+				F39027742A23125300414EB9 /* View */,
 				F3AFF5B8270941CC00FB6ED2 /* Controller */,
 				F387B4E42A11AD9100A97105 /* Managers */,
+				F39027772A23127200414EB9 /* Constants */,
+				F390277C2A23163A00414EB9 /* Error */,
 				F3554025265B470300A1E29F /* AppDelegate.swift */,
 				F3554027265B470300A1E29F /* SceneDelegate.swift */,
 				F355402E265B470400A1E29F /* Assets.xcassets */,
@@ -95,6 +105,38 @@
 			path = ViewAllBlogPosts;
 			sourceTree = "<group>";
 		};
+		F39027732A23124D00414EB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F39027752A23125F00414EB9 /* BlogPost.swift */,
+				F390277A2A23154200414EB9 /* BlogPostComment.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F39027742A23125300414EB9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F39027772A23127200414EB9 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F39027782A23127F00414EB9 /* APIConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		F390277C2A23163A00414EB9 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				F390277D2A23164F00414EB9 /* Common+Error.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		F3AFF5B8270941CC00FB6ED2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,20 +144,6 @@
 				F387B4EA2A11DE1900A97105 /* BlogPostComments */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		F3AFF5B9270941D200FB6ED2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		F3AFF5BA270941D600FB6ED2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,8 +216,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3554026265B470300A1E29F /* AppDelegate.swift in Sources */,
+				F39027792A23127F00414EB9 /* APIConstants.swift in Sources */,
 				F387B4EC2A11DE2F00A97105 /* BlogPostCommentsViewController.swift in Sources */,
 				F387B4E62A11AD9900A97105 /* NetworkManager.swift in Sources */,
+				F39027762A23125F00414EB9 /* BlogPost.swift in Sources */,
+				F390277B2A23154200414EB9 /* BlogPostComment.swift in Sources */,
+				F390277E2A23164F00414EB9 /* Common+Error.swift in Sources */,
 				F387B4E32A11AB2300A97105 /* ViewAllPostsViewController.swift in Sources */,
 				F3554028265B470300A1E29F /* SceneDelegate.swift in Sources */,
 			);

@@ -9,23 +9,16 @@ import UIKit
 
 final class ViewAllBlogPostsViewController: UIViewController {
 
+    // MARK: - Properties
+    
     private let networkManager: NetworkManager
     var blogPosts: [BlogPost]?
-    
-    init(networkManager: NetworkManager = NetworkManager()) {
-        self.networkManager = networkManager
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Hanko Academy Blog"
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         return label
     }()
     
@@ -37,6 +30,20 @@ final class ViewAllBlogPostsViewController: UIViewController {
         return tableView
     }()
     
+    // MARK: - Initializer
+    
+    init(networkManager: NetworkManager = NetworkManager()) {
+        self.networkManager = networkManager
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,12 +54,12 @@ final class ViewAllBlogPostsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         
-        allPostsUsingCompletionHandler()
+//        allPostsUsingCompletionHandler()
         allPostsUsingResultType()
 
-        Task {
-            await fetchAllPosts()
-        }
+//        Task {
+//            await fetchAllPosts()
+//        }
     }
     
     private func allPostsUsingCompletionHandler() {
@@ -74,7 +81,10 @@ final class ViewAllBlogPostsViewController: UIViewController {
         networkManager.allPosts { result in
             switch result {
             case .success(let blogPosts):
-                print(blogPosts)
+                DispatchQueue.main.async {
+                    self.blogPosts = blogPosts
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
                 print(error)
             }
@@ -120,6 +130,8 @@ final class ViewAllBlogPostsViewController: UIViewController {
         ])
     }
     
+    // MARK: - Action
+    
     @objc private func createBlogPost() {
         let id = Int.random(in: 1...1000)
         let userId = 20
@@ -136,6 +148,8 @@ final class ViewAllBlogPostsViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension ViewAllBlogPostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return blogPosts?.count ?? 0
@@ -150,6 +164,8 @@ extension ViewAllBlogPostsViewController: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension ViewAllBlogPostsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -166,34 +182,6 @@ extension ViewAllBlogPostsViewController: UITableViewDelegate {
                     self?.navigationController?.pushViewController(BlogPostCommentsViewController(blogPost: blogPost), animated: true)
                 }
             }
-        }
-    }
-}
-
-struct BlogPost: Codable {
-    let id: Int
-    let userId: Int
-    var title: String?
-    var body: String?
-}
-
-struct APIConstants {
-    static let baseURL = "https://jsonplaceholder.typicode.com"
-    
-    struct Path {
-        static let posts = "/posts"
-        static let comments = "/comments"
-    }
-    
-    struct URL {
-        static let allPosts = baseURL + Path.posts
-        
-        static func post(withID id: String) -> String {
-            return "\(allPosts)/\(id)"
-        }
-        
-        static func postComments(forPostID postID: String) -> String {
-            return "\(post(withID: postID))\(Path.comments)"
         }
     }
 }

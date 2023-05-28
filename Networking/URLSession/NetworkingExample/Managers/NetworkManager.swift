@@ -16,10 +16,6 @@ extension NetworkManager.APIError: LocalizedError {
     }
 }
 
-enum CommonError: Error {
-    case invalidURL
-}
-
 final class NetworkManager {
     
     enum HTTPMethod: String {
@@ -34,7 +30,7 @@ final class NetworkManager {
         case genericError
     }
     
-    // MARK: - Completion Handler
+    // MARK: - All Posts Completion Handler
     
     func allPosts(completion: @escaping ([BlogPost]?, Error?) -> Void) {
         guard let allPostsURL = URL(string: APIConstants.URL.allPosts) else {
@@ -63,7 +59,7 @@ final class NetworkManager {
         task.resume()
     }
     
-    // MARK: - Result Type
+    // MARK: - All Posts Result Type
     
     func allPosts(completion: @escaping (Result<[BlogPost], Error>) -> Void) {
         guard let allPostsURL = URL(string: APIConstants.URL.allPosts) else {
@@ -92,7 +88,7 @@ final class NetworkManager {
         task.resume()
     }
     
-    // MARK: - Async Await
+    // MARK: - All Posts Async Await
     
     func allPost() async throws -> [BlogPost] {
         guard let allPostsURL = URL(string: APIConstants.URL.allPosts) else {
@@ -112,6 +108,7 @@ final class NetworkManager {
             throw error
         }
     }
+    
     
     func postComments(forPostID postID: Int, completion: @escaping ([BlogPostComment]?, Error?) -> Void) {
         guard let postCommentsURL = URL(string: APIConstants.URL.postComments(forPostID: String(postID))) else {
